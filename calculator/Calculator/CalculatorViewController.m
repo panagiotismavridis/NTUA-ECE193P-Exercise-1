@@ -62,7 +62,6 @@
     NSString *digit = [sender currentTitle];
     if (!self.userPressedCommaDigit && self.userIsInTheMiddleOfEnteringANumber){
         self.display.text = [self.display.text stringByAppendingString:digit];
-        self.fullDisp.text = [self.fullDisp.text stringByAppendingString:digit];
         userPressedCommaDigit = YES;
         //[self.display setText:newDisplayText];
     }
@@ -75,7 +74,8 @@
     [self.brain clearStack];
 }
 - (IBAction)backSpacePressed:(id)sender {
-    //TODO:extra procedure for making backspace a working feature for our Calculator :D
+if (self.display.text.length != 0) 
+    self.display.text = [self.display.text stringByPaddingToLength:(self.display.text.length - 1)  withString:self.display.text startingAtIndex: 0];
 }
 
 @end
